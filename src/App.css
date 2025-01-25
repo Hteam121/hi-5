@@ -1,0 +1,232 @@
+/* === Splash Screen === */
+.splash-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* A more futuristic neon gradient */
+  background: linear-gradient(135deg, #2A2A72, #009FFD, #2A2A72, #009FFD);
+  background-size: 400% 400%;
+  animation: splashGradientBG 12s ease infinite;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.splash-title {
+  font-size: 4rem;
+  color: #fff;
+  animation: popIn 1.5s ease forwards;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.splash-subtitle {
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeIn 2s ease 1s forwards;
+}
+
+/* Keyframes for the splash background & text */
+@keyframes splashGradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 0.8; }
+}
+
+/* === Main App Layout === */
+.app {
+  min-height: 100vh;
+  width: 100%;
+  /* Vibrant multi-color background with a subtle animation */
+  background: linear-gradient(135deg, #667eea, #764ba2, #ff5858, #f09819);
+  background-size: 400% 400%;
+  animation: mainGradientBG 15s ease infinite;
+  color: #fff;
+  padding: 2rem;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", sans-serif, Arial, sans-serif;
+}
+
+@keyframes mainGradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.app-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* === Mic Button === */
+.mic-button {
+  display: block;
+  margin: 0 auto 2rem auto;
+  /* Neon gradient for the button */
+  background: linear-gradient(135deg, #ff00bf, #ff6b00);
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 10px rgba(255, 0, 191, 0.5);
+}
+
+.mic-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 0, 191, 0.75);
+}
+
+.mic-button.active {
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 191, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 0, 191, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 0, 191, 0.5);
+  }
+}
+
+/* === Manual Controls === */
+.manual-controls {
+  margin: 0 auto;
+  max-width: 600px;
+
+  /* Glassmorphism background */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.manual-controls h2 {
+  margin-top: 0;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.button-row {
+  margin: 1rem 0;
+}
+
+.button-row button {
+  /* Vibrant gradient for control buttons */
+  background: linear-gradient(135deg, #21d4fd, #b721ff);
+  border: none;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  margin: 0.3rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 8px rgba(33, 212, 253, 0.3);
+}
+.button-row button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(33, 212, 253, 0.5);
+}
+
+.presets button {
+  /* Different gradient for presets */
+  background: linear-gradient(135deg, #ffa62b, #ff7b2b);
+  box-shadow: 0 0 8px rgba(255, 166, 43, 0.3);
+}
+.presets button:hover {
+  box-shadow: 0 0 16px rgba(255, 166, 43, 0.5);
+}
+
+/* === Transcript === */
+.transcript-container {
+  margin: 0 auto;
+  max-width: 600px;
+
+  /* Glassmorphism background again */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.transcript-container h2 {
+  margin-top: 0;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.transcript-box {
+  max-height: 150px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #fff;
+  /* optional subtle text shadow */
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* === Responsive Design === */
+@media screen and (max-width: 600px) {
+  .app-title {
+    font-size: 1.8rem;
+  }
+  .mic-button {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+  .manual-controls {
+    padding: 1rem;
+  }
+  .button-row button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .transcript-box {
+    max-height: 120px;
+  }
+}
