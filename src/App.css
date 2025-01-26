@@ -230,3 +230,52 @@
     max-height: 120px;
   }
 }
+
+
+.app-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtle-message {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.manual-controls {
+  margin-top: 2rem;
+}
+
+.transcript-container {
+  margin-top: 2rem;
+}
+
+.transcript-box {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.subtle-message {
+  font-size: 0.85rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.project-info {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.project-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.project-info a:hover {
+  text-decoration: underline;
+}

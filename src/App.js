@@ -18,28 +18,28 @@ initializeApp(firebaseConfig);
 const db = getDatabase();
 
 const App = () => {
-  // Splash screen
+  // ======== State ========
   const [showSplash, setShowSplash] = useState(true);
-
-  // Transcript & Speech
   const [speechText, setSpeechText] = useState("");
   const [listening, setListening] = useState(false);
+
+  // ======== Refs ========
   const finalTranscriptRef = useRef("");
   const recognitionRef = useRef(null);
 
-  // Extended hand sign presets
+  // ======== Hand Signs Presets ========
   const handSigns = {
     rock:       { thumb: "close", index: "close", middle: "close", ring: "open",  pinky: "open" },
     thumbsUp:   { thumb: "open",  index: "close", middle: "close", ring: "close", pinky: "close" },
     highFive:   { thumb: "open",  index: "open",  middle: "open",  ring: "open",  pinky: "open" },
     fist:       { thumb: "close", index: "close", middle: "close", ring: "close", pinky: "close" },
-    rage:    { thumb: "close", index: "close", middle: "open",  ring: "close", pinky: "close" },
+    rage:       { thumb: "close", index: "close", middle: "open",  ring: "close", pinky: "close" },
     pinkyswear: { thumb: "close", index: "close", middle: "close", ring: "close", pinky: "open" },
     pointing:   { thumb: "close", index: "open",  middle: "close", ring: "close", pinky: "close" },
     callme:     { thumb: "open",  index: "close", middle: "close", ring: "close", pinky: "open" },
   };
 
-  // ========== Firebase Update Helpers ==========
+  // ======== Firebase Update Helpers ========
   const updateFingerCommand = (finger, action) => {
     set(dbRef(db, `handCommands/${finger}`), action);
     console.log(`Updated ${finger} to ${action}`);
@@ -62,7 +62,7 @@ const App = () => {
     });
   };
 
-  // ========== Parsing Logic ==========
+  // ======== Parsing Logic ========
   const parseNewText = (text) => {
     const lower = text.toLowerCase();
     let searchIndex = 0;
@@ -127,7 +127,7 @@ const App = () => {
     }
   };
 
-  // ========== Speech Recognition Flow ==========
+  // ======== Speech Recognition Flow ========
   const startListening = () => {
     if (!("SpeechRecognition" in window || "webkitSpeechRecognition" in window)) {
       console.error("SpeechRecognition not supported in this browser.");
@@ -168,6 +168,7 @@ const App = () => {
 
     recognitionRef.current.onend = () => {
       console.log("Speech recognition ended.");
+      // Auto-restart if still in listening mode
       if (listening) {
         console.log("Auto-restarting recognition...");
         recognitionRef.current.start();
@@ -181,7 +182,8 @@ const App = () => {
 
   const stopListening = () => {
     if (recognitionRef.current) {
-      recognitionRef.current.onend = null; // prevent auto-restart
+      // Prevent auto-restart on end
+      recognitionRef.current.onend = null;
       recognitionRef.current.stop();
       recognitionRef.current = null;
     }
@@ -207,7 +209,8 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ======== RENDER ========
+  // ======== Render ========
+
   // 1) Splash screen
   if (showSplash) {
     return (
@@ -222,6 +225,9 @@ const App = () => {
   return (
     <div className="app">
       <h1 className="app-title">HI-5 Bionic Hand Control</h1>
+      <p className="subtle-message">
+        This is for a live demo, please do not access the buttons unless you are part of the demo.
+      </p>
 
       <button
         onClick={toggleMic}
@@ -249,6 +255,12 @@ const App = () => {
       <div className="transcript-container">
         <h2>Transcript</h2>
         <div className="transcript-box">{speechText}</div>
+        <p className="project-info">
+          For more info on my past projects, check out{" "}
+          <a href="https://shaikhatim.com/projects" target="_blank" rel="noopener noreferrer">
+            shaikhatim.com/projects
+          </a>.
+        </p>
       </div>
     </div>
   );
