@@ -29,12 +29,11 @@ const App = () => {
 
   // Extended hand sign presets
   const handSigns = {
-    peace:      { thumb: "close", index: "open",  middle: "open",  ring: "close", pinky: "close" },
     rock:       { thumb: "close", index: "close", middle: "close", ring: "open",  pinky: "open" },
     thumbsUp:   { thumb: "open",  index: "close", middle: "close", ring: "close", pinky: "close" },
     highFive:   { thumb: "open",  index: "open",  middle: "open",  ring: "open",  pinky: "open" },
     fist:       { thumb: "close", index: "close", middle: "close", ring: "close", pinky: "close" },
-    flipoff:    { thumb: "close", index: "close", middle: "open",  ring: "close", pinky: "close" },
+    rage:    { thumb: "close", index: "close", middle: "open",  ring: "close", pinky: "close" },
     pinkyswear: { thumb: "close", index: "close", middle: "close", ring: "close", pinky: "open" },
     pointing:   { thumb: "close", index: "open",  middle: "close", ring: "close", pinky: "close" },
     callme:     { thumb: "open",  index: "close", middle: "close", ring: "close", pinky: "open" },
